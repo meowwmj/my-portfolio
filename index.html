@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary Joyce Santos | IT Professional Portfolio</title>
+    <link rel="icon" href="assets/cat.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-pink: #d45d79;
+            --secondary-purple: #6a4c93;
+            --dark-brown: #3b2a2a;
+            --light-gray: #f9f9f9;
+            --accent-yellow: #f9c74f;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-brown);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Background Patterns */
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-purple) 100%);
+            position: relative;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        
+        /* Enhanced Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-purple));
+            border-radius: 20px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-yellow);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            opacity: 0.1;
+            transform: scale(1);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 60%;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-pink) !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Enhanced Animations */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-animation {
+            transition-delay: calc(var(--stagger) * 100ms);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(-10px) rotate(-1deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes bounce-gentle {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* Enhanced Cards */
+        .skill-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .skill-card:hover::before {
+            left: 100%;
+        }
+        
+        .project-card {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        /* Enhanced Slideshow */
+        .slide {
+            position: absolute;
+            inset: 0;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: scale(1.1);
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .slide.next {
+            transform: translateX(100%);
+        }
+        
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+        
+        /* Enhanced Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 4px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 24px;
+            color: var(--dark-brown);
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-nav.prev {
+            left: -30px;
+        }
+        
+        .modal-nav.next {
+            right: -30px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--dark-brown);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-close:hover {
+            transform: scale(1.15) rotate(90deg);
+            background: var(--primary-pink);
+            color: white;
+        }
+        
+        .indicators {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .indicator::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            transition: border-color 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: white;
+            transform: scale(1.3);
+        }
+        
+        .indicator.active::before {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Enhanced Buttons */
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-purple));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 93, 121, 0.4);
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Enhanced Toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px 28px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateX(400px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            border-left: 4px solid var(--primary-pink);
+            backdrop-filter: blur(10px);
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        /* Enhanced Scroll Effects */
+        .scrolled {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Parallax Effects */
+        .parallax-bg {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .hero-gradient {
+                padding-top: 100px;
+                padding-bottom: 60px;
+            }
+            
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .modal-nav.prev {
+                left: -15px;
+            }
+            
+            .modal-nav.next {
+                right: -15px;
+            }
+            
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                top: -15px;
+                right: -15px;
+                font-size: 20px;
+            }
+            
+            .skill-card:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+            
+            .project-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .indicators {
+                bottom: -40px;
+                gap: 8px;
+            }
+            
+            .indicator {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .toast {
+                right: 10px;
+                left: 10px;
+                transform: translateX(0) translateY(-100px);
+            }
+            
+            .toast.show {
+                transform: translateX(0) translateY(0);
+            }
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary-pink), var(--secondary-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhanced Hover Effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(212, 93, 121, 0.5);
+        }
+        
+        /* Text Animations */
+        .text-gradient {
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-pink);
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-pink); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full bg-white z-50 transition-all duration-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+               <a href="#home" class="flex items-center space-x-2 hover-lift">
+                    <img src="assets/cat.png" alt="Logo" class="h-8 w-8 object-contain">
+                    <span class="text-xl font-bold text-gradient">meowwmj</span>
+                </a>
+
+                <div class="hidden md:flex space-x-4">
+                    <a href="#home" class="nav-link text-gray-700 active">Home</a>
+                    <a href="#about" class="nav-link text-gray-700">About</a>
+                    <a href="#skills" class="nav-link text-gray-700">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-700">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-700">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 focus:outline-none hover-lift">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-[#d45d79] transition-colors">Home</a>
+                    <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-[#d45d79] transition-colors">About</a>
+                    <a href="#skills" class="block px-3 py-2 text-gray-700 hover:text-[#d45d79] transition-colors">Skills</a>
+                    <a href="#projects" class="block px-3 py-2 text-gray-700 hover:text-[#d45d79] transition-colors">Projects</a>
+                    <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-[#d45d79] transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-slide-in-left">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                        Hi, I'm 
+                        <span class="text-gradient bg-gradient-to-r from-yellow-300 to-white bg-clip-text text-transparent">
+                            Mary Joyce
+                        </span>
+                    </h1>
+                    <h2 class="text-xl md:text-3xl font-semibold text-blue-100 mb-6">
+                        BS Information Systems Graduate
+                    </h2>
+                    <p class="text-lg text-blue-50 mb-8 leading-relaxed">
+                        Fresh graduate passionate about software engineering, IT support, and graphic design. 
+                        Ready to bring creativity and technical skills to your next project.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('contact')" class="btn-primary bg-white text-gray-600 hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300 hover-lift">
+                            Hire Me <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                        <button onclick="scrollToSection('projects')" class="btn-secondary border-2 border-white text-white hover:bg-white hover:text-[#d45d79] px-8 py-4 rounded-full font-medium transition-all duration-300">
+                            My Work
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-slide-in-right">
+                    <div class="relative">
+                        <div class="animate-float">
+                            <img src="images/1x1.jpg" 
+                                 alt="Mary Joyce Santos - Professional portrait" 
+                                 class="rounded-2xl shadow-2xl w-80 h-auto border-4 border-white object-cover hover-glow">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-xl shadow-lg animate-float hover-lift" style="animation-delay: 2s;">
+                            <i class="fas fa-globe text-[#d45d79] text-3xl"></i>
+                        </div>
+                        <div class="absolute -top-4 -left-4 bg-[#f9c74f] p-3 rounded-full shadow-lg animate-float hover-lift" style="animation-delay: 1s;">
+                            <div class="w-4 h-4 bg-white rounded-full"></div>
+                        </div>
+                        <div class="absolute top-1/4 -left-8 bg-white p-3 rounded-full shadow-lg animate-float hover-lift" style="animation-delay: 3s;">
+                            <div class="w-3 h-3 bg-[#6a4c93] rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] mx-auto rounded-full"></div>
+            </div>
+            <div class="lg:flex items-center gap-16">
+                <div class="lg:w-1/3 mb-10 lg:mb-0 flex justify-center animate-on-scroll">
+                    <div class="relative group">
+                        <img src="images/1x1.jpg" 
+                             alt="Mary Joyce working on laptop" 
+                             class="rounded-2xl shadow-xl w-80 h-96 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#d45d79]/20 to-[#6a4c93]/20 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                    </div>
+                </div>
+                <div class="lg:w-2/3 animate-on-scroll">
+                    <h3 class="text-3xl font-semibold text-gray-800 mb-6">Who Am I?</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        I'm a recent Bachelor of Science in Information Systems graduate with a passion for technology and design. 
+                        My academic journey has equipped me with a unique blend of technical knowledge and creative problem-solving skills.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        I specialize in creating elegant solutions whether it's through code, system support, or visual design. 
+                        My goal is to bridge the gap between technology and human needs with intuitive, user-friendly solutions.
+                    </p>
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        <div class="flex items-center group hover-lift stagger-animation" style="--stagger: 1">
+                            <div class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-full flex items-center justify-center mr-3 transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700 group-hover:text-[#d45d79] transition-colors">Software Development</span>
+                        </div>
+                        <div class="flex items-center group hover-lift stagger-animation" style="--stagger: 2">
+                            <div class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-full flex items-center justify-center mr-3 transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700 group-hover:text-[#d45d79] transition-colors">IT Support</span>
+                        </div>
+                        <div class="flex items-center group hover-lift stagger-animation" style="--stagger: 3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-full flex items-center justify-center mr-3 transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700 group-hover:text-[#d45d79] transition-colors">Graphic Design</span>
+                        </div>
+                        <div class="flex items-center group hover-lift stagger-animation" style="--stagger: 4">
+                            <div class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-full flex items-center justify-center mr-3 transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700 group-hover:text-[#d45d79] transition-colors">UI/UX Design</span>
+                        </div>
+                        <div class="flex items-center group hover-lift stagger-animation" style="--stagger: 5">
+                            <div class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-full flex items-center justify-center mr-3 transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700 group-hover:text-[#d45d79] transition-colors">Database Management</span>
+                        </div>
+                        <div class="flex items-center group hover-lift stagger-animation" style="--stagger: 6">
+                            <div class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-full flex items-center justify-center mr-3 transition-transform duration-300 group-hover:scale-110">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700 group-hover:text-[#d45d79] transition-colors">Technical Writing</span>
+                        </div>
+                    </div>
+                    <a href="assets/Santos, Mary Joyce - IT Resume.pdf" download class="btn-primary text-white px-8 py-4 rounded-full font-medium transition-all duration-300 hover-lift inline-flex items-center">
+                        <i class="fas fa-download mr-2"></i>Download CV
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">My Skills</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+                    Combining technical expertise with creative vision to deliver comprehensive solutions
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Software Engineering -->
+                <div class="skill-card bg-white p-8 rounded-2xl shadow-lg transition-all duration-500 animate-on-scroll stagger-animation" style="--stagger: 1">
+                    <div class="flex justify-center mb-6">
+                        <div class="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-2xl">
+                            <i class="fas fa-code text-[#d45d79] text-3xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6 text-gray-800">Software Engineering</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Web Development (HTML, CSS, JavaScript)</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">PHP & MySQL Development</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Database Design & Management</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">API Development & Integration</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- IT Support -->
+                <div class="skill-card bg-white p-8 rounded-2xl shadow-lg transition-all duration-500 animate-on-scroll stagger-animation" style="--stagger: 2">
+                    <div class="flex justify-center mb-6">
+                        <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-2xl">
+                            <i class="fas fa-cogs text-blue-600 text-3xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6 text-gray-800">IT Support & Systems</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Technical Troubleshooting</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Network Configuration</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Hardware & Software Installation</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">User Training & Documentation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Design & Creative -->
+                <div class="skill-card bg-white p-8 rounded-2xl shadow-lg transition-all duration-500 animate-on-scroll stagger-animation" style="--stagger: 3">
+                    <div class="flex justify-center mb-6">
+                        <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-2xl">
+                            <i class="fas fa-palette text-purple-600 text-3xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-center mb-6 text-gray-800">Design & Creative</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Graphic Design </span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">UI/UX Design Principles</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Responsive Web Design</span>
+                        </li>
+                        <li class="flex items-start group">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full mt-2 mr-4 transition-transform duration-300 group-hover:scale-125"></div>
+                            <span class="text-gray-700 group-hover:text-gray-900 transition-colors">Digital Asset Creation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Additional Technologies -->
+            <div class="mt-16 text-center animate-on-scroll">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8">Additional Technologies</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-white px-6 py-3 rounded-full text-gray-700 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-[#d45d79] hover:to-[#6a4c93] hover:text-white transition-all duration-300 hover-lift stagger-animation" style="--stagger: 1">Git & GitHub</span>
+                    <span class="bg-white px-6 py-3 rounded-full text-gray-700 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-[#d45d79] hover:to-[#6a4c93] hover:text-white transition-all duration-300 hover-lift stagger-animation" style="--stagger: 2">Responsive Design</span>
+                    <span class="bg-white px-6 py-3 rounded-full text-gray-700 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-[#d45d79] hover:to-[#6a4c93] hover:text-white transition-all duration-300 hover-lift stagger-animation" style="--stagger: 4">Agile Methodology</span>
+                    <span class="bg-white px-6 py-3 rounded-full text-gray-700 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-[#d45d79] hover:to-[#6a4c93] hover:text-white transition-all duration-300 hover-lift stagger-animation" style="--stagger: 5">Technical Documentation</span>
+                    <span class="bg-white px-6 py-3 rounded-full text-gray-700 shadow-md hover:shadow-lg hover:bg-gradient-to-r hover:from-[#d45d79] hover:to-[#6a4c93] hover:text-white transition-all duration-300 hover-lift stagger-animation" style="--stagger: 6">Project Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+                    A showcase of my work spanning software development, design, and research projects
+                </p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Emergency Rescue System -->
+                <div class="project-card relative rounded-2xl overflow-hidden shadow-xl w-full h-80 bg-white animate-on-scroll stagger-animation" style="--stagger: 1" onclick="openModal('modal1')">
+                    <div class="slideshow-container h-full relative">
+                        <div class="slide active">
+                            <img src="images/index.png" alt="Emergency Dashboard" class="w-full h-80 object-cover">
+                        </div>
+                        <div class="slide">
+                            <img src="images/dashboard.png" alt="Response Dashboard" class="w-full h-80 object-cover">
+                        </div>
+                        <div class="slide">
+                            <img src="images/agencies.png" alt="Agencies Management" class="w-full h-80 object-cover">
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#d45d79]/90 to-transparent flex flex-col justify-end p-6 opacity-90 hover:opacity-100 transition duration-500 z-10">
+                        <h3 class="text-white text-xl font-bold mb-2">Emergency Rescue System</h3>
+                        <p class="text-pink-100 mb-4 text-sm">The Development of a Web-Based Emergency Rescue and Aid System Utilizing Geospatial Referencing. </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">PHP</span>
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">JavaScript</span>
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Weather Tracker -->
+                <div class="project-card relative rounded-2xl overflow-hidden shadow-xl w-full h-80 bg-white animate-on-scroll stagger-animation" style="--stagger: 2" onclick="openModal('modal2')">
+                    <div class="slideshow-container h-full relative">
+                        <div class="slide active">
+                            <img src="images/weather.png" alt="Weather Dashboard" class="w-full h-80 object-cover">
+                        </div>
+                        <div class="slide">
+                            <img src="images/report urself.png" alt="Report Interface" class="w-full h-80 object-cover">
+                        </div>
+                        <div class="slide">
+                            <img src="images/emergency details.png" alt="Emergency Details" class="w-full h-80 object-cover">
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#d45d79]/90 to-transparent flex flex-col justify-end p-6 opacity-90 hover:opacity-100 transition duration-500 z-10">
+                        <h3 class="text-white text-xl font-bold mb-2">Emergency Response Features</h3>
+                        <p class="text-pink-100 mb-4 text-sm">Real-time weather monitoring and emergency reporting with location-based and data visualization.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">Real-time Data</span>
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">Weather API</span>
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">Geolocation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: System Analytics -->
+                <div class="project-card relative rounded-2xl overflow-hidden shadow-xl w-full h-80 bg-white animate-on-scroll stagger-animation" style="--stagger: 3" onclick="openModal('modal3')">
+                    <div class="slideshow-container h-full relative">
+                        <div class="slide active">
+                            <img src="images/products.png" alt="Analytics Dashboard" class="w-full h-80 object-cover">
+                        </div>
+                        <div class="slide">
+                            <img src="images/figma.png" alt="Data Visualization" class="w-full h-80 object-cover">
+                        </div>
+                        <div class="slide">
+                            <img src="images/figma2.png" alt="Report Generation" class="w-full h-80 object-cover">
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#d45d79]/90 to-transparent flex flex-col justify-end p-6 opacity-90 hover:opacity-100 transition duration-500 z-10">
+                        <h3 class="text-white text-xl font-bold mb-2">UI/UX Design Collection</h3>
+                        <p class="text-pink-100 mb-4 text-sm">Curated collection of user interface designs showcasing modern design principles.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">Canva</span>
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">Figma</span>
+                            <span class="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full border border-white/20">Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] mx-auto rounded-full"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+                    Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Information -->
+                <div class="animate-on-scroll">
+                    <h3 class="text-3xl font-semibold text-gray-800 mb-6">Let's Talk</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        I'm always excited to hear about new opportunities and interesting projects. 
+                        Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    </p>
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift group">
+                            <div class="w-14 h-14 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Email</p>
+                                <p class="text-gray-800 font-semibold text-lg">maryjoycesantos77@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift group">
+                            <div class="w-14 h-14 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Phone</p>
+                                <p class="text-gray-800 font-semibold text-lg">+63 918 753 4305</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift group">
+                            <div class="w-14 h-14 bg-gradient-to-r from-[#d45d79] to-[#6a4c93] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Location</p>
+                                <p class="text-gray-800 font-semibold text-lg">Hagonoy, Bulacan, Philippines</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                          <h3 class="text-xl font-semibold text-gray-800 mb-4">Connect With Me</h3>
+
+                        <div class="flex space-x-4 justify-center md:justify-start">
+                            <a href="#" class="bg-blue-100 p-3 rounded-lg text-[#d45d79] hover:bg-blue-200 transition duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/meowwmj" class="bg-blue-100 p-3 rounded-lg text-[#d45d79] hover:bg-blue-200 transition duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mary-joyce-santos-1131ab374/" class="bg-blue-100 p-3 rounded-lg text-[#d45d79] hover:bg-blue-200 transition duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/meowwmj/" class="bg-blue-100 p-3 rounded-lg text-[#d45d79] hover:bg-blue-200 transition duration-300">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="animate-on-scroll">
+                    <form id="contact-form" class="space-y-6 bg-white p-8 rounded-2xl shadow-xl">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d45d79] focus:border-transparent transition-all duration-300 hover:border-gray-300" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d45d79] focus:border-transparent transition-all duration-300 hover:border-gray-300" placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d45d79] focus:border-transparent transition-all duration-300 hover:border-gray-300" placeholder="What's this about?">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" required rows="6" class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#d45d79] focus:border-transparent transition-all duration-300 hover:border-gray-300 resize-none" placeholder="Tell me about your project or just say hello!"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover-lift">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-300 text-lg">
+                    © 2025 meowwmj  ❤️
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <img id="modal1-img" src="" alt="Project Image">
+            <button class="modal-close" onclick="closeModal('modal1')">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="modal-nav prev" onclick="prevSlide('modal1')">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav next" onclick="nextSlide('modal1')">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="indicators">
+                <div class="indicator active" onclick="showSlide('modal1', 0)"></div>
+                <div class="indicator" onclick="showSlide('modal1', 1)"></div>
+                <div class="indicator" onclick="showSlide('modal1', 2)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <img id="modal2-img" src="" alt="Project Image">
+            <button class="modal-close" onclick="closeModal('modal2')">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="modal-nav prev" onclick="prevSlide('modal2')">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav next" onclick="nextSlide('modal2')">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="indicators">
+                <div class="indicator active" onclick="showSlide('modal2', 0)"></div>
+                <div class="indicator" onclick="showSlide('modal2', 1)"></div>
+                <div class="indicator" onclick="showSlide('modal2', 2)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <img id="modal3-img" src="" alt="Project Image">
+            <button class="modal-close" onclick="closeModal('modal3')">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="modal-nav prev" onclick="prevSlide('modal3')">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav next" onclick="nextSlide('modal3')">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="indicators">
+                <div class="indicator active" onclick="showSlide('modal3', 0)"></div>
+                <div class="indicator" onclick="showSlide('modal3', 1)"></div>
+                <div class="indicator" onclick="showSlide('modal3', 2)"></div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <script>
+        // Project data - Updated with your actual images
+        const projects = {
+            modal1: [
+                'images/index.png',
+                'images/dashboard.png',
+                'images/agencies.png'
+            ],
+            modal2: [
+                'images/weather.png',
+                'images/report urself.png',
+                'images/emergency details.png'
+            ],
+            modal3: [
+                'images/products.png',
+                'images/figma.png',
+                'images/figma2.png'
+            ]
+        };
+
+        let currentSlides = {
+            modal1: 0,
+            modal2: 0,
+            modal3: 0
+        };
+
+        let intervals = {};
+
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading-overlay').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Enhanced scroll animations
+        function observeElements() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Navigation functionality
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Enhanced navigation active state and scroll effects
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Update active navigation link
+            const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            sections.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+                        if (activeLink && activeLink.classList.contains('nav-link')) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Enhanced slideshow functionality
+        function startSlideshow(containerSelector) {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+            
+            const slides = container.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'next', 'prev');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else if (i === (index + 1) % slides.length) {
+                        slide.classList.add('next');
+                    } else if (i === (index - 1 + slides.length) % slides.length) {
+                        slide.classList.add('prev');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Auto advance slides with enhanced timing
+            const interval = setInterval(nextSlide, 5000);
+            intervals[containerSelector] = interval;
+
+            return interval;
+        }
+
+        // Enhanced modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const modalImg = document.getElementById(modalId + '-img');
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Show first image
+            modalImg.src = projects[modalId][0];
+            currentSlides[modalId] = 0;
+            updateIndicators(modalId);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextSlide(modalId) {
+            currentSlides[modalId] = (currentSlides[modalId] + 1) % projects[modalId].length;
+            updateModalImage(modalId);
+        }
+
+        function prevSlide(modalId) {
+            currentSlides[modalId] = (currentSlides[modalId] - 1 + projects[modalId].length) % projects[modalId].length;
+            updateModalImage(modalId);
+        }
+
+        function showSlide(modalId, index) {
+            currentSlides[modalId] = index;
+            updateModalImage(modalId);
+        }
+
+        function updateModalImage(modalId) {
+            const modalImg = document.getElementById(modalId + '-img');
+            modalImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                modalImg.src = projects[modalId][currentSlides[modalId]];
+                modalImg.style.opacity = '1';
+                updateIndicators(modalId);
+            }, 150);
+        }
+
+        function updateIndicators(modalId) {
+            const modal = document.getElementById(modalId);
+            const indicators = modal.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlides[modalId]) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Enhanced contact form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate sending
+            setTimeout(() => {
+                // Show toast
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Hide toast after 4 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }, 1500);
+        });
+
+        // Enhanced keyboard navigation for modals
+        document.addEventListener('keydown', function(e) {
+            const activeModal = document.querySelector('.modal.active');
+            if (!activeModal) return;
+            
+            const modalId = activeModal.id;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closeModal(modalId);
+                    break;
+                case 'ArrowLeft':
+                    prevSlide(modalId);
+                    break;
+                case 'ArrowRight':
+                    nextSlide(modalId);
+                    break;
+            }
+        });
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+
+        // Enhanced smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start slideshows for each project card
+            startSlideshow('.project-card:nth-child(1) .slideshow-container');
+            startSlideshow('.project-card:nth-child(2) .slideshow-container');
+            startSlideshow('.project-card:nth-child(3) .slideshow-container');
+            
+            // Initialize scroll animations
+            observeElements();
+            
+            // Add stagger delays to elements
+            document.querySelectorAll('.stagger-animation').forEach((el, index) => {
+                el.style.transitionDelay = `${index * 100}ms`;
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.getElementById('home');
+            const parallaxElements = heroSection.querySelectorAll('.parallax-bg');
+            
+            parallaxElements.forEach(el => {
+                const speed = el.dataset.speed || 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
